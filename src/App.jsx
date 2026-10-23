@@ -1,8 +1,8 @@
 
 import { useState } from "react";
 
-import OfferBar from "./components/offerbar";
-import Navbar from "./components/navbar";
+import OfferBar from "./components/OfferBar";
+import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import GiftCollections from "./components/GiftCollections";
 import ProductSection from "./components/ProductSection";
