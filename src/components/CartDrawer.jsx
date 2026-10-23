@@ -61,7 +61,7 @@ function CartDrawer({
   }
     const handlePayment = () => {
     const options= {
-      key: "rzp_test_StdVeuNqqdJQVp",
+      key: "Razorpay_key",
       amount: 100, // Amount in paise
       currency: "INR",
       name: "Test Company",

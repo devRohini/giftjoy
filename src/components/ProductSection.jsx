@@ -16,6 +16,8 @@ function ProductSection({
   onAddToCart = () => {},
   wishlistItems = [],
   onToggleWishlist = () => {},
+   selectedCategory = "All Gifts",
+  searchQuery = "",
 }) {
   const [occasion, setOccasion] = useState("Any Occasion");
   const [budget, setBudget] = useState("All Budgets");

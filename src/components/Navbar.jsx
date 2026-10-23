@@ -7,7 +7,9 @@ import {
 } from "lucide-react";
 import cartImage from "../assets/cart.png";
 
-function Navbar({ onCartClick, cartCount = 0, onWishlistClick, }) {
+function Navbar({ onCartClick, cartCount = 0, onWishlistClick,onCategoryClick = () => {},
+  searchQuery = "",
+  onSearchChange = () => {}, }) {
   return (
     <nav className="flex w-full flex-wrap cursor-pointer items-center justify-between gap-4 border-b border-gray-100 bg-white px-4 py-3 shadow-sm md:px-6">
 
@@ -39,9 +41,9 @@ function Navbar({ onCartClick, cartCount = 0, onWishlistClick, }) {
         {/* Gift Finder Quiz */}
         <button
           type="button"
-          className="hidden items-center gap-2 rounded-full bg-linear-to-r from-orange-400 to-rose-500 px-4 py-3 text-xs font-bold text-white shadow-sm transition hover:brightness-105 sm:flex  cursor-pointer"
+          className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 px-6 py-1.5 text-xs font-semibold text-white shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
         >
-          <Sparkles size={16} />
+          <Sparkles size={14} strokeWidth={2.2} />
           <span>
             Gift Finder
             <br />
@@ -55,6 +57,8 @@ function Navbar({ onCartClick, cartCount = 0, onWishlistClick, }) {
           <input
             id="gift-search"
             type="search"
+             value={searchQuery}
+  onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search gifts..."
             className="w-full min-w-0 bg-transparent text-xs outline-none placeholder:text-slate-400"
           />
@@ -111,6 +115,7 @@ function Navbar({ onCartClick, cartCount = 0, onWishlistClick, }) {
 
         <a
           href="#all-gifts"
+           onClick={() => onCategoryClick("All Gifts")}
           className="cursor-pointer rounded-xl bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-600 transition hover:bg-rose-100"
         >
           All Gifts
@@ -118,6 +123,7 @@ function Navbar({ onCartClick, cartCount = 0, onWishlistClick, }) {
 
         <a
           href="#kids"
+           onClick={() => onCategoryClick("Kids")}
           className="flex cursor-pointer items-center gap-2 rounded-xl px-3 py-2 text-sm text-slate-600 transition hover:bg-rose-50 hover:text-rose-600"
         >
           <span className="text-lg">🎈</span>
@@ -126,6 +132,7 @@ function Navbar({ onCartClick, cartCount = 0, onWishlistClick, }) {
 
         <a
           href="#men"
+          onClick={() => onCategoryClick("Men")}
           className="flex cursor-pointer items-center gap-2 rounded-xl px-3 py-2 text-sm text-slate-600 transition hover:bg-rose-50 hover:text-rose-600"
         >
           <span className="text-lg">🎁</span>
@@ -134,6 +141,7 @@ function Navbar({ onCartClick, cartCount = 0, onWishlistClick, }) {
 
         <a
           href="#women"
+          onClick={() => onCategoryClick("Women")}
           className="flex cursor-pointer items-center gap-2 rounded-xl px-3 py-2 text-sm text-slate-600 transition hover:bg-rose-50 hover:text-rose-600"
         >
           <span className="text-lg">🌸</span>

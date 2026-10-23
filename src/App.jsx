@@ -19,8 +19,18 @@ function App() {
 
   const [cartItems, setCartItems] = useState([]);
   const [wishlistItems, setWishlistItems] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+ const [selectedCategory, setSelectedCategory] = useState("All Gifts");
+const [searchQuery, setSearchQuery] = useState("");
+  
 
+const handleCategoryClick = (category) => {
+  setSelectedCategory(category);
+
+  document.getElementById("all-gifts")?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+};
   // Add product to cart or increase its quantity
   function handleAddToCart(product) {
     setCartItems((previous) => {
@@ -107,12 +117,13 @@ function App() {
 
       {/* Navbar */}
       <Navbar
-        onCartClick={() => setIsCartOpen(true)}
-        onWishlistClick={() => setIsWishlistOpen(true)}
-        cartCount={cartCount}
-        cartTotal={cartTotal}
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
+          onCategoryClick={handleCategoryClick}
+  searchQuery={searchQuery}
+  onSearchChange={setSearchQuery}
+  onCartClick={() => setIsCartOpen(true)}
+  onWishlistClick={() => setIsWishlistOpen(true)}
+  cartCount={cartCount}
+
       />
 
       {/* Homepage Sections */}
@@ -121,10 +132,11 @@ function App() {
         <GiftCollections />
 
         <ProductSection
-          onAddToCart={handleAddToCart}
-          wishlistItems={wishlistItems}
-          onToggleWishlist={handleToggleWishlist}
-          searchQuery={searchQuery}
+          selectedCategory={selectedCategory}
+  searchQuery={searchQuery}
+  onAddToCart={handleAddToCart}
+  wishlistItems={wishlistItems}
+  onToggleWishlist={handleToggleWishlist}
         />
 
         <SignatureHampers />
